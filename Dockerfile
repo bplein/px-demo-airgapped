@@ -12,7 +12,7 @@ ARG	 MYTIMEZONE=America/Chicago
 
 WORKDIR /tmp
 RUN apt-get update && apt install --no-install-recommends -y pv nano git bash-completion fio \
-	unzip tzdata iperf3 iputils-ping vim sysstat \
+	unzip tzdata iperf3 iputils-ping vim sysstat tmux \
 	&& apt install -y wget curl openssh-client binutils \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/* /var/log/*
 # takes longer to build, but more  secure if you upgrade....
