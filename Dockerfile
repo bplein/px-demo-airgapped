@@ -39,9 +39,10 @@ RUN curl -LO https://dl.k8s.io/release/${KUBEVERSION}/bin/linux/amd64/kubectl \
     && unzip awscliv2.zip \
     && ./aws/install \
 	&& rm -rf /tmp/*
-RUN mkdir /root/assets
-WORKDIR /root/assets
+RUN mkdir /assets && chmod 777 /assets
+WORKDIR /assets
 RUN git clone https://github.com/bplein/px-demo-postgres.git \
     && git clone https://github.com/bplein/px-demo-autopilot.git
 # hack to let this run in the background without failing
+WORKDIR /
 CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"   
